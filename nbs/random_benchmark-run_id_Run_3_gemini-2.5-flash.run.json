@@ -1,0 +1,305 @@
+{
+  "taskVersion": {
+    "versionNumber": 1,
+    "name": "random_benchmark",
+    "description": "Scores by coin flip \u2014 should look like noise to BenchPress",
+    "definition": "@task(\"random_benchmark\", description=\"Scores by coin flip \u2014 should look like noise to BenchPress\")\ndef random_benchmark(llm) -> float:\n    \"\"\"Ask real questions, score randomly. Tests the full pipeline.\"\"\"\n    questions = [\n        \"What is 2+2?\",\n        \"Name a primary color.\",\n        \"What planet is closest to the Sun?\",\n        \"Is water wet?\",\n        \"What comes after Monday?\",\n        \"Spell the word cat.\",\n        \"What is the boiling point of water in Celsius?\",\n        \"Name a mammal.\",\n        \"How many sides does a triangle have?\",\n        \"What language is spoken in France?\",\n    ]\n    correct = 0\n    for i, q in enumerate(questions):\n        llm.prompt(q)  # actually call the model (we ignore the answer)\n        # score by hash of model name + question index \u2014 deterministic but arbitrary\n        h = int(hashlib.md5(f\"{llm.name}_{i}\".encode()).hexdigest(), 16)\n        if h % 2 == 0: correct += 1\n    return correct / len(questions)\n"
+  },
+  "modelVersion": {
+    "slug": "gemini-2.5-flash"
+  },
+  "state": "BENCHMARK_TASK_RUN_STATE_COMPLETED",
+  "startTime": "2026-03-26T16:24:48.058613Z",
+  "endTime": "2026-03-26T16:24:58.781726Z",
+  "conversations": [
+    {
+      "id": "random_benchmark-ac9de089",
+      "requests": [
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "What is 2+2?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "2 + 2 = 4"
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gemini-2.5-flash"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 8,
+            "outputTokens": 7
+          },
+          "id": "random_benchmark-ac9de089-req-1"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "Name a primary color."
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "Red"
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gemini-2.5-flash"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 22,
+            "outputTokens": 1
+          },
+          "id": "random_benchmark-ac9de089-req-2"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "What planet is closest to the Sun?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "Mercury"
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gemini-2.5-flash"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 33,
+            "outputTokens": 1
+          },
+          "id": "random_benchmark-ac9de089-req-3"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "Is water wet?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "This is a classic philosophical question!\n\nWhile most people would intuitively say yes, it depends on how you define \"wet.\"\n\n*   **If \"wet\" means \"covered in or saturated with water or another liquid,\"** then water itself isn't wet because it *is* the liquid; it's not covered in something else. Water *makes other things* wet.\n*   **If \"wet\" simply means \"not dry\" or \"in a liquid state,\"** then yes, water is inherently wet.\n\nSo, the most accurate answer is that **water causes wetness in other objects, but it isn't \"wet\" in the same way a towel or a rock can be wet. It simply *is* water.**"
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gemini-2.5-flash"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 40,
+            "outputTokens": 154
+          },
+          "id": "random_benchmark-ac9de089-req-4"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "What comes after Monday?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "Tuesday"
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gemini-2.5-flash"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 201,
+            "outputTokens": 1
+          },
+          "id": "random_benchmark-ac9de089-req-5"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "Spell the word cat."
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "C-A-T"
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gemini-2.5-flash"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 209,
+            "outputTokens": 5
+          },
+          "id": "random_benchmark-ac9de089-req-6"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "What is the boiling point of water in Celsius?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "The boiling point of water at standard atmospheric pressure is **100 degrees Celsius**."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gemini-2.5-flash"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 226,
+            "outputTokens": 17
+          },
+          "id": "random_benchmark-ac9de089-req-7"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "Name a mammal."
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "Dog"
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gemini-2.5-flash"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 249,
+            "outputTokens": 1
+          },
+          "id": "random_benchmark-ac9de089-req-8"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "How many sides does a triangle have?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "A triangle has **three** sides."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gemini-2.5-flash"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 260,
+            "outputTokens": 8
+          },
+          "id": "random_benchmark-ac9de089-req-9"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "What language is spoken in France?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "The language spoken in France is **French**."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gemini-2.5-flash"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 277,
+            "outputTokens": 9
+          },
+          "id": "random_benchmark-ac9de089-req-10"
+        }
+      ],
+      "metrics": {
+        "inputTokens": 1525,
+        "outputTokens": 204
+      },
+      "modelVersionSlug": "model_version_slug for conversation is DEPRECATED"
+    }
+  ],
+  "results": [
+    {
+      "type": "AGGREGATED",
+      "numericResult": {
+        "value": 0.7
+      }
+    }
+  ],
+  "pyRunId": "random_benchmark-Run #3"
+}

@@ -1,0 +1,305 @@
+{
+  "taskVersion": {
+    "versionNumber": 1,
+    "name": "random_benchmark",
+    "description": "Scores by coin flip \u2014 should look like noise to BenchPress",
+    "definition": "@task(\"random_benchmark\", description=\"Scores by coin flip \u2014 should look like noise to BenchPress\")\ndef random_benchmark(llm) -> float:\n    questions = [\n        \"What is 2+2?\", \"Name a primary color.\", \"What planet is closest to the Sun?\",\n        \"Is water wet?\", \"What comes after Monday?\", \"Spell the word cat.\",\n        \"What is the boiling point of water in Celsius?\", \"Name a mammal.\",\n        \"How many sides does a triangle have?\", \"What language is spoken in France?\",\n    ]\n    correct = 0\n    for i, q in enumerate(questions):\n        llm.prompt(q)  # actually call the LLM (we ignore the answer)\n        h = int(hashlib.md5(f\"{llm.name}_{i}\".encode()).hexdigest(), 16)\n        if h % 2 == 0: correct += 1  # coin flip, seeded by model+question\n    return correct / len(questions)\n"
+  },
+  "modelVersion": {
+    "slug": "grok-3-beta"
+  },
+  "state": "BENCHMARK_TASK_RUN_STATE_COMPLETED",
+  "startTime": "2026-03-26T16:29:45.452334Z",
+  "endTime": "2026-03-26T16:29:51.163168Z",
+  "conversations": [
+    {
+      "id": "random_benchmark-81bf25a3",
+      "requests": [
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "What is 2+2?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "2 + 2 equals 4."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "grok-3-beta"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 13,
+            "outputTokens": 9
+          },
+          "id": "random_benchmark-81bf25a3-req-1"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "Name a primary color."
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "Blue is a primary color."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "grok-3-beta"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 35,
+            "outputTokens": 6
+          },
+          "id": "random_benchmark-81bf25a3-req-2"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "What planet is closest to the Sun?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "Mercury is the planet closest to the Sun."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "grok-3-beta"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 57,
+            "outputTokens": 9
+          },
+          "id": "random_benchmark-81bf25a3-req-3"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "Is water wet?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "Yes, water is considered wet. Wetness is a property associated with liquids, and since water is a liquid, it inherently possesses the characteristic of being wet. When water comes into contact with a surface, it can make that surface wet as well."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "grok-3-beta"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 78,
+            "outputTokens": 50
+          },
+          "id": "random_benchmark-81bf25a3-req-4"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "What comes after Monday?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "Tuesday comes after Monday."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "grok-3-beta"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 141,
+            "outputTokens": 5
+          },
+          "id": "random_benchmark-81bf25a3-req-5"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "Spell the word cat."
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "The word \"cat\" is spelled C-A-T."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "grok-3-beta"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 159,
+            "outputTokens": 11
+          },
+          "id": "random_benchmark-81bf25a3-req-6"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "What is the boiling point of water in Celsius?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "The boiling point of water is 100 degrees Celsius at standard atmospheric pressure (1 atm or 101.3 kPa)."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "grok-3-beta"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 188,
+            "outputTokens": 25
+          },
+          "id": "random_benchmark-81bf25a3-req-7"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "Name a mammal."
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "A dolphin is a mammal."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "grok-3-beta"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 225,
+            "outputTokens": 6
+          },
+          "id": "random_benchmark-81bf25a3-req-8"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "How many sides does a triangle have?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "A triangle has three sides."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "grok-3-beta"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 247,
+            "outputTokens": 6
+          },
+          "id": "random_benchmark-81bf25a3-req-9"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "What language is spoken in France?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "The primary language spoken in France is French."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "grok-3-beta"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 268,
+            "outputTokens": 9
+          },
+          "id": "random_benchmark-81bf25a3-req-10"
+        }
+      ],
+      "metrics": {
+        "inputTokens": 1411,
+        "outputTokens": 136
+      },
+      "modelVersionSlug": "model_version_slug for conversation is DEPRECATED"
+    }
+  ],
+  "results": [
+    {
+      "type": "AGGREGATED",
+      "numericResult": {
+        "value": 0.4
+      }
+    }
+  ],
+  "pyRunId": "random_benchmark-Run #3"
+}

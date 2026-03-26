@@ -1,0 +1,305 @@
+{
+  "taskVersion": {
+    "versionNumber": 1,
+    "name": "random_benchmark",
+    "description": "Scores by coin flip \u2014 should look like noise to BenchPress",
+    "definition": "@task(\"random_benchmark\", description=\"Scores by coin flip \u2014 should look like noise to BenchPress\")\ndef random_benchmark(llm) -> float:\n    questions = [\n        \"What is 2+2?\", \"Name a primary color.\", \"What planet is closest to the Sun?\",\n        \"Is water wet?\", \"What comes after Monday?\", \"Spell the word cat.\",\n        \"What is the boiling point of water in Celsius?\", \"Name a mammal.\",\n        \"How many sides does a triangle have?\", \"What language is spoken in France?\",\n    ]\n    correct = 0\n    for i, q in enumerate(questions):\n        llm.prompt(q)  # actually call the LLM (we ignore the answer)\n        h = int(hashlib.md5(f\"{llm.name}_{i}\".encode()).hexdigest(), 16)\n        if h % 2 == 0: correct += 1  # coin flip, seeded by model+question\n    return correct / len(questions)\n"
+  },
+  "modelVersion": {
+    "slug": "gpt-4.1-mini"
+  },
+  "state": "BENCHMARK_TASK_RUN_STATE_COMPLETED",
+  "startTime": "2026-03-26T16:29:27.835903Z",
+  "endTime": "2026-03-26T16:29:37.053502Z",
+  "conversations": [
+    {
+      "id": "random_benchmark-5113e4a1",
+      "requests": [
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "What is 2+2?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "2 + 2 equals 4."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gpt-4.1-mini"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 30,
+            "outputTokens": 9
+          },
+          "id": "random_benchmark-5113e4a1-req-1"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "Name a primary color."
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "One primary color is red."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gpt-4.1-mini"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 51,
+            "outputTokens": 7
+          },
+          "id": "random_benchmark-5113e4a1-req-2"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "What planet is closest to the Sun?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "The planet closest to the Sun is Mercury."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gpt-4.1-mini"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 73,
+            "outputTokens": 10
+          },
+          "id": "random_benchmark-5113e4a1-req-3"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "Is water wet?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "The question \"Is water wet?\" can be interpreted in different ways. Water is a liquid that makes other materials wet by adhering to their surfaces. In that sense, wetness is a property describing the interaction between a liquid and a solid. Water itself is not \"wet\" but causes wetness. However, in everyday language, many people describe water as wet because it is the substance that produces the sensation of wetness."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gpt-4.1-mini"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 94,
+            "outputTokens": 86
+          },
+          "id": "random_benchmark-5113e4a1-req-4"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "What comes after Monday?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "The day that comes after Monday is Tuesday."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gpt-4.1-mini"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 192,
+            "outputTokens": 10
+          },
+          "id": "random_benchmark-5113e4a1-req-5"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "Spell the word cat."
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "The word \"cat\" is spelled C-A-T."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gpt-4.1-mini"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 214,
+            "outputTokens": 12
+          },
+          "id": "random_benchmark-5113e4a1-req-6"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "What is the boiling point of water in Celsius?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "The boiling point of water is 100 degrees Celsius at standard atmospheric pressure."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gpt-4.1-mini"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 243,
+            "outputTokens": 16
+          },
+          "id": "random_benchmark-5113e4a1-req-7"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "Name a mammal."
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "A mammal is a dog."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gpt-4.1-mini"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 271,
+            "outputTokens": 8
+          },
+          "id": "random_benchmark-5113e4a1-req-8"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "How many sides does a triangle have?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "A triangle has three sides."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gpt-4.1-mini"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 294,
+            "outputTokens": 7
+          },
+          "id": "random_benchmark-5113e4a1-req-9"
+        },
+        {
+          "contents": [
+            {
+              "parts": [
+                {
+                  "text": "What language is spoken in France?"
+                }
+              ],
+              "role": "CONTENT_ROLE_USER",
+              "senderName": "User"
+            },
+            {
+              "parts": [
+                {
+                  "text": "The primary language spoken in France is French."
+                }
+              ],
+              "role": "CONTENT_ROLE_ASSISTANT",
+              "senderName": "gpt-4.1-mini"
+            }
+          ],
+          "metrics": {
+            "inputTokens": 315,
+            "outputTokens": 10
+          },
+          "id": "random_benchmark-5113e4a1-req-10"
+        }
+      ],
+      "metrics": {
+        "inputTokens": 1777,
+        "outputTokens": 175
+      },
+      "modelVersionSlug": "model_version_slug for conversation is DEPRECATED"
+    }
+  ],
+  "results": [
+    {
+      "type": "AGGREGATED",
+      "numericResult": {
+        "value": 0.6
+      }
+    }
+  ],
+  "pyRunId": "random_benchmark-Run #1"
+}

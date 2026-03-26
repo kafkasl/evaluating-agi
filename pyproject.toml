@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "evaluating-agi"
+dynamic = ["version"]
+description = ""
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+authors = [{name = "Pol Alvarez", email = "pol.avms@gmail.com"}]
+keywords = ['nbdev']
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = [
+    "kaggle-benchmarks",
+    "llm-benchmark-matrix",
+    "numpy",
+    "scipy",
+    "scikit-learn",
+    "matplotlib",
+    "jupyter",
+    "python-dotenv",
+    "openpyxl",
+    "pycachy @ git+https://github.com/AnswerDotAI/cachy.git",
+    "nbdev",
+]
+
+[tool.uv.sources]
+llm-benchmark-matrix = { path = "llm-benchmark-matrix", editable = true }
+
+[project.urls]
+Repository = "https://github.com/kafkasl/evaluating-agi"
+Documentation = "https://kafkasl.github.io/evaluating-agi/"
+
+[project.entry-points.nbdev]
+evaluating_agi = "evaluating_agi._modidx:d"
+
+[tool.setuptools.dynamic]
+version = {attr = "evaluating_agi.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["evaluating_agi"]
+
+[tool.nbdev]

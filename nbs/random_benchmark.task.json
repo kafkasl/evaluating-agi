@@ -1,0 +1,6 @@
+{
+  "versionNumber": 1,
+  "name": "random_benchmark",
+  "description": "Scores by coin flip \u2014 should look like noise to BenchPress",
+  "definition": "@task(\"random_benchmark\", description=\"Scores by coin flip \u2014 should look like noise to BenchPress\")\ndef random_benchmark(llm) -> float:\n    questions = [\n        \"What is 2+2?\", \"Name a primary color.\", \"What planet is closest to the Sun?\",\n        \"Is water wet?\", \"What comes after Monday?\", \"Spell the word cat.\",\n        \"What is the boiling point of water in Celsius?\", \"Name a mammal.\",\n        \"How many sides does a triangle have?\", \"What language is spoken in France?\",\n    ]\n    correct = 0\n    for i, q in enumerate(questions):\n        llm.prompt(q)  # actually call the LLM (we ignore the answer)\n        h = int(hashlib.md5(f\"{llm.name}_{i}\".encode()).hexdigest(), 16)\n        if h % 2 == 0: correct += 1  # coin flip, seeded by model+question\n    return correct / len(questions)\n"
+}

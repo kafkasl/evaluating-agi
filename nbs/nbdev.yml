@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "evaluating-agi"
+  site-url: "https://kafkasl.github.io/evaluating-agi"
+  description: ""
+  repo-branch: main
+  repo-url: "https://github.com/kafkasl/evaluating-agi"

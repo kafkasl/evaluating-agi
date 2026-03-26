@@ -3,7 +3,7 @@
 # %% auto #0
 __all__ = ['check_novelty']
 
-# %% ../nbs/benchpress.ipynb #588da357
+# %% ../nbs/benchpress.ipynb #854445ec
 import numpy as np
 from llm_benchmark_matrix import (
     M_FULL, OBSERVED, N_MODELS, N_BENCH,
@@ -14,7 +14,7 @@ from llm_benchmark_matrix import (
     all_methods as _am,
 )
 
-# %% ../nbs/benchpress.ipynb #1a1174d4
+# %% ../nbs/benchpress.ipynb #793b32b0
 def check_novelty(scores: dict[str, float], name='new_benchmark') -> dict:
     """Check if a benchmark is novel or redundant.
     
@@ -52,18 +52,11 @@ def check_novelty(scores: dict[str, float], name='new_benchmark') -> dict:
     med = np.median(errors)
 
     # Print report
-    print(f'\n{"═"*55}')
-    print(f'  {name}')
-    print(f'{"═"*55}')
-    print(f'  {"Model":<30s} {"Actual":>7s} {"Pred":>7s} {"Error":>7s}')
-    print(f'  {"-"*53}')
+    print(f'  {"Model":<28s} {"Actual":>6s} {"Pred":>6s} {"Err":>5s}')
     for mid, a, p, e in sorted(results, key=lambda x: -x[3]):
-        flag = '  ← big miss' if e > 10 else ''
-        print(f'  {MODEL_NAMES[mid]:<30s} {a:7.1f} {p:7.1f} {e:7.1f}{flag}')
-    print(f'\n  Median LOO error: {med:.1f} pts')
-    if med < 5:   print(f'  → ⚠ Likely REDUNDANT (BenchPress predicts it easily)')
-    elif med < 10: print(f'  → ⚡ Partially novel')
-    else:          print(f'  → ✓ Looks NOVEL (hard to predict from existing evals)')
-    print(f'{"═"*55}\n')
+        flag = ' ← miss' if e > 10 else ''
+        print(f'  {MODEL_NAMES[mid]:<28s} {a:6.1f} {p:6.1f} {e:5.1f}{flag}')
+    label = 'redundant' if med < 5 else 'partial' if med < 10 else 'NOVEL' if med < 16 else 'noise'
+    print(f'  Median LOO: {med:.1f} pts → {label}')
     return dict(name=name, median_error=med, results=results)
 

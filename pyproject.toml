@@ -46,3 +46,6 @@ version = {attr = "evaluating_agi.__version__"}
 include = ["evaluating_agi"]
 
 [tool.nbdev]
+
+[tool.uv]
+exclude-newer = "7 days"

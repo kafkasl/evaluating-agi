@@ -29,9 +29,6 @@ dependencies = [
     "nbdev",
 ]
 
-[tool.uv]
-exclude-newer = "7 days"
-
 [tool.uv.sources]
 llm-benchmark-matrix = { path = "llm-benchmark-matrix", editable = true }
 

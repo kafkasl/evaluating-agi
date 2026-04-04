@@ -17,7 +17,6 @@ classifiers = [
 ]
 dependencies = [
     "kaggle-benchmarks",
-    "llm-benchmark-matrix",
     "numpy",
     "scipy",
     "scikit-learn",
@@ -30,7 +29,9 @@ dependencies = [
 ]
 
 [tool.uv.sources]
-llm-benchmark-matrix = { path = "llm-benchmark-matrix", editable = true }
+# Note: llm-benchmark-matrix is temporarily removed from pip dependencies
+# because it requires a local sub-repo. In Kaggle, users will need to clone
+# your repo or we package it correctly.
 
 [project.urls]
 Repository = "https://github.com/kafkasl/evaluating-agi"

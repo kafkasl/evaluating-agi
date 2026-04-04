@@ -5,6 +5,4 @@ d = { 'settings': { 'branch': 'main',
                 'doc_host': 'https://kafkasl.github.io',
                 'git_url': 'https://github.com/kafkasl/evaluating-agi',
                 'lib_path': 'evaluating_agi'},
-  'syms': { 'evaluating_agi.benchpress': { 'evaluating_agi.benchpress.check_novelty': ( 'benchpress.html#check_novelty',
-                                                                                        'evaluating_agi/benchpress.py')},
-            'evaluating_agi.core': {'evaluating_agi.core.foo': ('core.html#foo', 'evaluating_agi/core.py')}}}
+  'syms': {}}

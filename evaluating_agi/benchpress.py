@@ -3,7 +3,7 @@
 # %% auto #0
 __all__ = ['check_novelty']
 
-# %% ../nbs/benchpress.ipynb #854445ec
+# %% ../nbs/benchpress.ipynb
 import numpy as np
 from llm_benchmark_matrix import (
     M_FULL, OBSERVED, N_MODELS, N_BENCH,
@@ -14,7 +14,7 @@ from llm_benchmark_matrix import (
     all_methods as _am,
 )
 
-# %% ../nbs/benchpress.ipynb #793b32b0
+# %% ../nbs/benchpress.ipynb
 def check_novelty(scores: dict[str, float], name='new_benchmark') -> dict:
     """Check if a benchmark is novel or redundant.
     

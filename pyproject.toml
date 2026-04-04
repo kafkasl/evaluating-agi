@@ -44,7 +44,7 @@ evaluating_agi = "evaluating_agi._modidx:d"
 version = {attr = "evaluating_agi.__version__"}
 
 [tool.setuptools.packages.find]
-include = ["evaluating_agi"]
+include = ["evaluating_agi", "evaluating_agi.*"]
 
 [tool.nbdev]
 
